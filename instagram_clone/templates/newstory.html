@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}New story{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<div class="card w-100" style="width: 18rem;">
+  <div class="card-body">
+    <h2 class="card-title text-center mb-5">New Story</h2>
+    <form method="post" action="" enctype="multipart/form-data" role="form">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+        {{ form.content }}
+        <label class="input-group-text fw-bolder" for="inputGroupFile02">Upload</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label fw-bolder">Caption</label>
+        {{ form.caption }}
+      </div>
+      <div class="text-center">
+        <button type="submit" name="action" class="btn btn-success">
+          Create Story
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
