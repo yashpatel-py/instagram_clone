@@ -10,29 +10,30 @@
 <div class="columns is-mobile is-centered">
   <div class="column is-half">
     {% for notification in notifications %}
-    <!-- comment -->
     {% if notification.notification_type == 2 %}
     <div class="card mb-3" style="max-width: 540px;">
-      <!-- <a href="{% url 'delete-notification' notification.id %}" class="delete"></a> -->
-      <div class="row g-0">
-        <div class="col-md-3 m-2">
-          {% if notification.sender.profile.picture %}
-          <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image">
-          {% else %}
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          {% endif %}
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            {% if notification.sender.profile.first_name and notification.sender.profile.last_name %}
-            <h5 class="card-title">{{ notification.sender.profile.first_name }}
-              {{ notification.sender.profile.last_name }}</h5>
-            {%else %}
-            <h6>unknown</h6>
+      <div class="alert alert-dismissible fade show" role="alert">
+        <a type="button" class="btn-close" href="{% url 'delete-notification' notification.id %}"></a>
+        <div class="row g-0">
+          <div class="col-md-3 m-2">
+            {% if notification.sender.profile.picture %}
+            <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image">
+            {% else %}
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
             {% endif %}
-            <small class="card-title">@{{ notification.sender.username }}</small>
-            <p class="card-text">Commented: {{ notification.text_preview }}</p>
-            <p class="card-text"><small class="text-muted">{{ notification.date|naturaltime }}</small></p>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              {% if notification.sender.profile.first_name and notification.sender.profile.last_name %}
+              <h5 class="card-title">{{ notification.sender.profile.first_name }}
+                {{ notification.sender.profile.last_name }}</h5>
+              {%else %}
+              <h6>unknown</h6>
+              {% endif %}
+              <small class="card-title">@{{ notification.sender.username }}</small>
+              <p class="card-text">Commented: {{ notification.text_preview }}</p>
+              <p class="card-text"><small class="text-muted">{{ notification.date|naturaltime }}</small></p>
+            </div>
           </div>
         </div>
       </div>
@@ -42,28 +43,31 @@
     <!-- for follow and following notidation -->
     {% if notification.notification_type == 3 %}
     <div class="card mb-3" style="max-width: 540px;">
-      <!-- <a href="{% url 'delete-notification' notification.id %}" class="delete"></a> -->
-      <div class="row g-0">
-        <div class="col-md-3 m-2">
-          {% if notification.sender.profile.picture %}
-          <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image">
-          {% else %}
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          {% endif %}
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            {% if notification.sender.profile.first_name and notification.sender.profile.last_name %}
-            <h5 class="card-title">{{ notification.sender.profile.first_name }}
-              {{ notification.sender.profile.last_name }}</h5>
-
-            {%else %}
-            <h6>unknown</h6>
+      <div class="alert alert-dismissible fade show" role="alert">
+        <a type="button" class="btn-close" href="{% url 'delete-notification' notification.id %}"></a>
+        <div class="row g-0">
+          <div class="col-md-3 m-2">
+            {% if notification.sender.profile.picture %}
+            <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image">
+            {% else %}
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
             {% endif %}
-            <small class="card-title">@{{ notification.sender.username }}</small>
-            <p class="card-text">Followed you!</p>
-            <p>Follow back ?<a class="card-title" href = "/{{notification.sender.username}}"> {{notification.sender.username}}</a></p>
-            <p class="card-text"><small class="text-muted">{{ notification.date|naturaltime }}</small></p>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              {% if notification.sender.profile.first_name and notification.sender.profile.last_name %}
+              <h5 class="card-title">{{ notification.sender.profile.first_name }}
+                {{ notification.sender.profile.last_name }}</h5>
+
+              {%else %}
+              <h6>unknown</h6>
+              {% endif %}
+              <small class="card-title">@{{ notification.sender.username }}</small>
+              <p class="card-text">Followed you!</p>
+              <p>Follow back ?<a class="card-title" href="/{{notification.sender.username}}">
+                  {{notification.sender.username}}</a></p>
+              <p class="card-text"><small class="text-muted">{{ notification.date|naturaltime }}</small></p>
+            </div>
           </div>
         </div>
       </div>
@@ -73,27 +77,29 @@
     <!-- for likes -->
     {% if notification.notification_type == 1 %}
     <div class="card mb-3" style="max-width: 540px;">
-      <!-- <a href="{% url 'delete-notification' notification.id %}" class="delete"></a> -->
-      <div class="row g-0">
-        <div class="col-md-3 m-2">
-          {% if notification.sender.profile.picture %}
-          <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image">
-          {% else %}
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          {% endif %}
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            {% if notification.sender.profile.first_name and notification.sender.profile.last_name %}
-            <h5 class="card-title">{{ notification.sender.profile.first_name }}
-              {{ notification.sender.profile.last_name }}</h5>
-
-            {%else %}
-            <h6>unknown</h6>
+      <div class="alert alert-dismissible fade show" role="alert">
+        <a type="button" class="btn-close" href="{% url 'delete-notification' notification.id %}"></a>
+        <div class="row g-0">
+          <div class="col-md-3 m-2">
+            {% if notification.sender.profile.picture %}
+            <img src="{{ notification.sender.profile.picture.url }}" alt="Placeholder image">
+            {% else %}
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
             {% endif %}
-            <small class="card-title">@{{ notification.sender.username }}</small>
-            <p class="card-text">Liked your post</p>
-            <p class="card-text"><small class="text-muted">{{ notification.date|naturaltime }}</small></p>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              {% if notification.sender.profile.first_name and notification.sender.profile.last_name %}
+              <h5 class="card-title">{{ notification.sender.profile.first_name }}
+                {{ notification.sender.profile.last_name }}</h5>
+
+              {%else %}
+              <h6>unknown</h6>
+              {% endif %}
+              <small class="card-title">@{{ notification.sender.username }}</small>
+              <p class="card-text">Liked your post</p>
+              <p class="card-text"><small class="text-muted">{{ notification.date|naturaltime }}</small></p>
+            </div>
           </div>
         </div>
       </div>
