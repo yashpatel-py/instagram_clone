@@ -7,7 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+
+    <!-- bulma css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- bootstrap css -->
@@ -40,19 +42,12 @@
               <a class="nav-link" href="#">Explore</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link btn btn-success" href="{% url 'show-notifications' %}">
+              <a class="nav-link" href="{% url 'show-notifications' %}">
                 Notifications
                 {% if count_notifications %}
                 <span class="badge bg-danger">{{ count_notifications }}</span>
                 {% endif %}
               </a>
-
-              <!-- <a href="{% url 'show-notifications' %}" class="nav-link">
-                Notifications
-                {% if count_notifications %}
-                <span class="badge">{{ count_notifications }}</span>
-                {% endif %}
-              </a> -->
             </li>
 
 
@@ -65,7 +60,7 @@
             </li>
 
             <li class="nav-item">
-              <a role="button" class="nav-link btn btn btn-success" href="{% url 'profile' request.user %}">Profile -
+              <a role="button" class="nav-link" href="{% url 'profile' request.user %}">Profile -
                 {{ request.user }}</a>
             </li>
 
@@ -76,8 +71,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'newstory' %}">New Story</a>
             </li>
-
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown dropstart">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Settings
