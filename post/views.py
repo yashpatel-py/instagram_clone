@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.core.paginator import Paginator
 
 from post.models import Stream, Post, Tag, Likes, PostFileContent
 from post.forms import NewPostForm
 from stories.models import Story, StoryStream
+from django.contrib.auth.models import User
+from django.db.models import Q
 
 from comment.models import Comment
 from comment.forms import CommentForm
@@ -37,7 +40,6 @@ def index(request):
     context = {
         'post_items': post_items,
         'stories': stories,
-
     }
 
     return HttpResponse(template.render(context, request))
@@ -80,7 +82,6 @@ def PostDetails(request, post_id):
         'form': form,
         'comments': comments,
     }
-
     return HttpResponse(template.render(context, request))
 
 
@@ -172,3 +173,25 @@ def favorite(request, post_id):
         profile.favorites.add(post)
 
     return HttpResponseRedirect(reverse('postdetails', args=[post_id]))
+
+
+@login_required
+def search(request):
+    query = request.GET.get("q")
+    context = {}
+
+    if query:
+        users = User.objects.filter(Q(username__icontains=query))
+
+        # Pagination
+        paginator = Paginator(users, 6)
+        page_number = request.GET.get('page')
+        users_paginator = paginator.get_page(page_number)
+
+        context = {
+            'users': users_paginator,
+        }
+
+    template = loader.get_template('search.html')
+
+    return HttpResponse(template.render(context, request))
