@@ -81,70 +81,42 @@
   </div>
 </div>
 
-<!--  -->
-<div class="columns is-mobile is-centered">
-  <div class="column">
-    <div class="card-content">
-      {% for comment in comments %}
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            {% if comment.user.profile.picture %}
-            <img src="{{ comment.user.profile.picture.url }}" alt="Placeholder image">
-            {% else %}
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-            {% endif %}
-          </p>
-        </figure>
+<div class="container">
+  <h2>Comments ({{comments.count}})</h2>
+  <div class="my-2">
+    <form method="post" action="" role="form">
+      {% csrf_token %}
+      <div class="form-group my-2">
+        <label for="exampleInputemail">Post comment</label>
+        {{ form.body }}
+      </div>
+      <button type="submit" name="action" class="btn btn-primary">Post comment</button>
+      </p>
+    </form>
+  </div>
 
-        <div class="media-content">
-          <div class="content">
-            <p>
-              {% if comment.user.profile.first_name %}
-              <strong>{{ comment.user.profile.first_name }} {{ comment.user.profile.last_name }}</strong><small>
-                @{{ comment.user.username }}</small>
-              {% else %}
-              <strong>Unknown</strong>
-              {% endif %}
-              <br>
-              {{ comment.body }}
-              <br>
-              <strong><small>{{ comment.date|naturaltime }}</small></strong>
-            </p>
-          </div>
-
-      </article>
-      {% endfor %}
-
-      <h4>Comment</h4>
-      <article class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            {% if request.user.profile.picture %}
-            <img src="{{ request.user.profile.picture.url }}" alt="Placeholder image">
-            {% else %}
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-            {% endif %}
-          </p>
-        </figure>
-        <div class="media-content">
-          <form method="post" action="" role="form">
-            {% csrf_token %}
-            <div class="field">
-              <p class="control">
-                {{ form.body }}
-              </p>
-            </div>
-            <div class="field">
-              <p class="control">
-                <button type="submit" name="action" class="button">Post comment</button>
-              </p>
-            </div>
-          </form>
-        </div>
-      </article>
+  {% for comment in comments %}
+  <div class="row my-3">
+    <div class="col-md-1">
+      {% if comment.user.profile.picture %}
+      <img src="{{ comment.user.profile.picture.url }}" alt="Placeholder image">
+      {% else %}
+      <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+      {% endif %}
+    </div>
+    <div class="col-md-11">
+      {% if comment.user.profile.first_name %}
+      <strong>{{ comment.user.profile.first_name }} {{ comment.user.profile.last_name }}</strong><small>
+        @{{ comment.user.username }}</small>
+      {% else %}
+      <strong>Unknown</strong>
+      {% endif %}
+      <br>
+      <p>{{ comment.body }} </p>
+      <strong><small>{{ comment.date|naturaltime }}</small></strong>
     </div>
   </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
