@@ -7,6 +7,7 @@ from django.contrib.auth import update_session_auth_hash
 
 from authy.models import Profile
 from post.models import Post, Follow, Stream
+from comment.models import Comment
 from django.db import transaction
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
@@ -43,6 +44,7 @@ def UserProfile(request, username):
     paginator = Paginator(posts, 8)
     page_number = request.GET.get('page')
     posts_paginator = paginator.get_page(page_number)
+    comments = Comment.objects.all()
 
     template = loader.get_template('profile.html')
 

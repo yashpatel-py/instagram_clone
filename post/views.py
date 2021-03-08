@@ -24,11 +24,8 @@ from authy.models import Profile
 def index(request):
     user = request.user
     posts = Stream.objects.filter(user=user)
-
     stories = StoryStream.objects.filter(user=user)
-
     group_ids = []
-
     for post in posts:
         group_ids.append(post.post_id)
 
@@ -40,6 +37,29 @@ def index(request):
     context = {
         'post_items': post_items,
         'stories': stories,
+    }
+
+    return HttpResponse(template.render(context, request))
+
+
+def story(request):
+    user = request.user
+    postss = Stream.objects.filter(user=user)
+    storiess = StoryStream.objects.filter(user=user)
+
+    group_ids = []
+
+    for post in postss:
+        group_ids.append(post.post_id)
+
+    post_items = Post.objects.filter(
+        id__in=group_ids).all().order_by('-posted')
+
+    template = loader.get_template('story.html')
+
+    context = {
+        'post_items': post_items,
+        'stories': storiess,
     }
 
     return HttpResponse(template.render(context, request))
