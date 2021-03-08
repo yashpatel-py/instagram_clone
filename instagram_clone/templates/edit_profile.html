@@ -7,75 +7,50 @@
 
 <div class="columns is-mobile">
   <div class="column is-half is-offset-one-quarter">
-
     <div class="card">
-    <div class="card-content">
-
-    <form method="post" enctype="multipart/form-data" action="" role="form">
-      {% csrf_token %}
-    <h3 class="title is-3">Edit Profile</h3>
-
-          <div class="field">
-              <label class="label is-medium">Choose your picture</label>
-              <div class="file is-boxed">
-                {{ form.picture }}
-              </div>
+      <div class="card-content">
+        <h1 class="text-center">Edit Profile</h1>
+        <hr>
+        <form method="post" enctype="multipart/form-data" action="" role="form">
+          {% csrf_token %}
+          <label for="profile" class="form-label fw-bolder">Choose profile picture</label>
+          <div class="input-group mb-3">
+            {{ form.picture }}
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
           </div>
 
-          <div class="field">
-              <label class="label is-medium">First name</label>
-              <div class="control">
-                {{ form.first_name }}
-              </div>
+          <div class="mb-3">
+            <label for="first_name" class="form-label fw-bolder">First name</label>
+            {{ form.first_name }}
+          </div>
+          <div class="mb-3">
+            <label for="last_name" class="form-label fw-bolder">Last name</label>
+            {{ form.last_name }}
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label fw-bolder">Location</label>
+            {{ form.location }}
+          </div>
+          <div class="mb-3">
+            <label for="url" class="form-label fw-bolder">Url</label>
+            {{ form.url }}
+          </div>
+          <div class="mb-3">
+            <label for="bio" class="form-label fw-bolder">Bio</label>
+            {{ form.profile_info }}
           </div>
 
-          <div class="field">
-              <label class="label is-medium">Last name</label>
-              <div class="control">
-                {{ form.last_name }}
-              </div>
+          {% if form.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Error!! <strong>{{ form.errors }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
+          {% endif %}
 
-          <div class="field">
-              <label class="label is-medium">Location</label>
-              <div class="control">
-                {{ form.location }}
-              </div>
-          </div>
-
-          <div class="field">
-              <label class="label is-medium">url</label>
-              <div class="control">
-                {{ form.url }}
-              </div>
-          </div>
-
-          <div class="field">
-              <label class="label is-medium">BIO</label>
-              <div class="control">
-                {{ form.profile_info }}
-              </div>
-          </div>
-
-      <div class="row">
-        <div class="col s12">
-          <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
-        </div>
+          <button type="submit" value="login" class="btn btn-info btn-lg">Update profile</button>
+        </form>
       </div>
-
-
-      <div class="field">
-      <p class="control">
-        <button type="submit" value="login" class="button is-success">
-          Update
-        </button>
-      </p>
     </div>
-
-    </form>
-  </div>
-</div>
-
   </div>
 </div>
 

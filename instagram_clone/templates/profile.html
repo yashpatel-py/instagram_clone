@@ -361,9 +361,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
     <div class="profile">
       <div class="profile-image">
         {% if profile.picture %}
-        <img class="is-rounded" src="{{ profile.picture.url }}">
+        <img class="bd-placeholder-img rounded-circle" src="{{ profile.picture.url }}">
         {% else %}
-        <img class="is-rounded" src="https://bulma.io/images/placeholders/256x256.png">
+        <img class="bd-placeholder-img rounded-circle" src="https://bulma.io/images/placeholders/256x256.png">
         {% endif %}
       </div>
       <div class="profile-user-settings">
@@ -389,11 +389,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
       </div>
 
       <div class="profile-bio">
-
         <h5></h5>
         <p style="font-size: 1.0rem;">{% if profile.profile_info %} <strong>Bio: </strong> {{ profile.profile_info }}
-          {% endif %}</p>
-
+          {% endif %}
+          </p>
         {% if user.is_authenticated and user == profile.user %}
         <a role="button" class="btn profile-edit-btn" href="{% url 'edit-profile' %}">Edit Profile</a>
         {% endif %}
@@ -404,13 +403,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
     <!-- End of profile section -->
   </div>
   <!-- End of container -->
-
 </header>
 
 <main>
-
   <div class="container">
-
     <div class="tabs is-centered">
       <ul>
         <li class="{% if url_name == 'profile' %}is-active{% endif %}">
