@@ -92,7 +92,7 @@ class ChangePasswordForm(forms.ModelForm):
 class EditProfileForm(forms.ModelForm):
     picture = forms.ImageField(required=False)
     first_name = forms.CharField(
-        widget=forms.TextInput(), max_length=50, required=False)
+        widget=forms.TextInput(attrs={'class': 'form-control'}), max_length=50, required=False)
     last_name = forms.CharField(
         widget=forms.TextInput(), max_length=50, required=False)
     location = forms.CharField(widget=forms.TextInput(),
