@@ -59,12 +59,6 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-and if you want to save your time the you can use username and password which i have defined already
-```
-username: yash
-password: yash
-```
-
 - Step 2 - After above step you can directly run project by bellow command
 ```
 python manage.py runserver
