@@ -8,6 +8,11 @@
 <div class="card w-100" style="width: 18rem;">
   <div class="card-body">
     <h2 class="card-title text-center mb-5">New post</h2>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  Please upload only file which extension <strong>.jpg and .mp4</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
     <form method="post" action="" enctype="multipart/form-data" role="form">
       {% csrf_token %}
       <div class="input-group mb-3">

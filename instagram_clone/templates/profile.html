@@ -422,7 +422,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
       {% for post in posts %}
       <div class="gallery-item" tabindex="0">
-        {% if post.content.first.file.name %}
+        {% if post.content.first.file.name|slice:"-3:" == 'jpg' or post_item.content.first.file.name|slice:"-3:" == 'png' %}
         <a href="{{ post.get_absolute_url }}">
           <img src="{{ post.content.first.file.url }}" class="gallery-image" alt="">
         </a>
