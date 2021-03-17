@@ -16,6 +16,8 @@
 
 - Creeate Account and login
 - Edit Profile (first name, last name, bio, url)
+    - Last seen Date and time both
+    - Created account Date and time both
 - Change passowrd
 - New post
 - New Story
