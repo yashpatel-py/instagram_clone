@@ -368,6 +368,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
       </div>
       <div class="profile-user-settings">
         <h1 class="profile-user-name text-sm">@{{ profile.user }}</h1><br>
+        <p class="text-sm">Last login: <strong>{{ profile.user.last_login}}</strong></p>
+        <p class="text-sm">Created account on: <strong>{{ profile.user.date_joined}}</strong></p><br>
         <small style="font-size: 20px;">{% if profile.first_name %}{{ profile.first_name }}
           {{ profile.last_name }} {% endif %}</small>
         {% if user.is_authenticated and user != profile.user %}

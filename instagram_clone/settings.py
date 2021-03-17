@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -143,5 +143,5 @@ LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = '/user/login/'
 
 
-#Celery Broker
+# Celery Broker
 CELERY_BROKER_URL = 'amqp://localhost:5672'
