@@ -179,8 +179,7 @@ def follow(request, username, option):
 
             with transaction.atomic():
                 for post in posts:
-                    stream = Stream(post=post, user=request.user,
-                                    date=post.posted, following=following)
+                    stream = Stream(post=post, user=request.user, date=post.posted, following=following)
                     stream.save()
 
         return HttpResponseRedirect(reverse('profile', args=[username]))

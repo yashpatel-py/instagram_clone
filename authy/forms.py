@@ -6,8 +6,7 @@ from authy.models import Profile
 
 
 def ForbiddenUsers(value):
-    forbidden_users = ['admin', 'css', 'js', 'authenticate', 'login', 'logout', 'administrator', 'root',
-                       'email', 'user', 'join', 'sql', 'static', 'python', 'delete']
+    forbidden_users = ['admin', 'css', 'js', 'authenticate', 'login', 'logout', 'administrator', 'root', 'email', 'user', 'join', 'sql', 'static', 'python', 'delete']
     if value.lower() in forbidden_users:
         raise ValidationError(
             'Invalid name for user, this is a reserverd word.')
@@ -112,5 +111,4 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('picture', 'first_name', 'last_name',
-                  'location', 'url', 'profile_info')
+        fields = ('picture', 'first_name', 'last_name', 'location', 'url', 'profile_info')
