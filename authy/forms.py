@@ -30,13 +30,14 @@ def UniqueUser(value):
 
 
 class SignupForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(),
-                               max_length=30, required=True,)
-    email = forms.CharField(widget=forms.EmailInput(),
-                            max_length=100, required=True,)
-    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'form-control mb-3', 'placeholder': 'Username'}), max_length=30, required=True,)
+    email = forms.CharField(widget=forms.EmailInput(
+        attrs={'class': 'form-control mb-3', 'placeholder': 'Email id'}), max_length=100, required=True,)
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Enter password'}))
     confirm_password = forms.CharField(
-        widget=forms.PasswordInput(), required=True, label="Confirm your password.")
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm your password'}), required=True, label="Confirm your password.")
 
     class Meta:
 
